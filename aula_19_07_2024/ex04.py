@@ -4,20 +4,37 @@
 # -Equilátero
 # -Escaleno
 # -Isósceles
+a = float(input("Informe o lado a: "))
+if a < 0:
+	while a > 0:
+		a = float(input("Informe um valor válido para o lado a: "))
+b = float(input("Informe o lado b: "))
+if b < 0:
+	while b > 0:
+		b = float(input("Informe um valor válido para o lado b: "))
+c = float(input("Informe o lado c: "))
+if c < 0:
+	while c > 0:
+		c = float(input("Informe um valor válido para o lado c: "))
 
-lado_a = float(input("informe o lado A: "))
-lado_b = float(input("informe o lado B: "))
-lado_c = float(input("informe o lado C: "))
+soma_ab = a + b
+soma_ac = a + c
+soma_bc = b + c
 
-if lado_a > lado_b - lado_c and lado_a < lado_b + lado_c and lado_b > lado_a - lado_c and lado_b < lado_a + lado_c and lado_c > lado_a - lado_b and lado_c < lado_a + lado_b:
-	if lado_a == lado_b and lado_b == lado_c:
-		print("O triângulo é válido, e é um triângulo equilátero!")
-	else: 
-		if lado_a != lado_b and lado_b != lado_c:
-			print("O triângulo é válido, e é um triângulo escaleno!")
-		else:
-			print("O triângulo é válido, e é um triângulo isósceles!")
+if soma_ab < c and soma_ac < b and soma_bc < a:
+	print("Não é um triângulo válido!")
 else:
-	print("O triângulo não é válido!")
+	if a == b and b == c:
+		print("É um triângulo válido e equilátero!")
+	else:
+		if a == b and b != c:
+			print("É um triângulo válido e isósceles!")
+		else:
+			if b == c and c != a:
+				print("É um triângulo válido e isósceles!")
+			else:
+				print("É um triângulo válido e escaleno!")
+
+
 
 
