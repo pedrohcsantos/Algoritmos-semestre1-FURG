@@ -18,7 +18,9 @@ if senha_teste != senha_correta:
 	while senha_teste != senha_correta and tentativas > 0:
 		senha_teste = input(f"Senha incorreta, digite novamente ({tentativas} tentativas restantes): ")
 		tentativas = tentativas - 1
-		if tentativas == 0:
-			print("Limite de tentativas atingido!")
+	if senha_teste == senha_correta:
+		print("Senha correta")
+	if tentativas == 0 and senha_teste != senha_correta:
+		print("Limite de tentativas atingido!")
 else:
 	print("Senha correta")
