@@ -16,10 +16,8 @@ while segue:
     clickposiY = 10 + last_click.getY()
     clicknegatX = last_click.getX() - 10
     clicknegatY = last_click.getY() - 10
-    if click.getX() < clickposiX and click.getY() < clickposiY: 
-        segue = False
-    if click.getX() < clicknegatX and click.getY() < clicknegatY:
-        segue = False 
+    if click.getX() < clickposiX and click.getY() < clickposiY and click.getX() > clicknegatX and click.getY() > clicknegatY: 
+        segue = False  
     nova_bolinha = gf.Circle(click, 10)
     cor = rd.randint(0, len(cores) - 1)
     nova_bolinha.setFill(cores[cor])
