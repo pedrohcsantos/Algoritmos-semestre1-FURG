@@ -3,14 +3,14 @@ import csv
 
 CSV_FILE = "estoque_ecommerce.csv"
 
-def cria_botao(x1,y1,x2,y2):
+def cria_botao(x1,y1,x2,y2): #Função para criar botão
     novo_botao = gp.Rectangle(gp.Point(x1,y1), gp.Point(x2,y2))
     novo_botao.setFill('white')
     novo_botao.draw(win)
     botoes.append(novo_botao)
     return novo_botao
 
-def foi_no_botao(botao,onde_cliquei):
+def foi_no_botao(botao,onde_cliquei): #Função para verificar se o clique do mouse foi no botão
     btX = botao.getP1().getX()
     btY = botao.getP1().getY()
     bt2X = botao.getP2().getX()
@@ -20,7 +20,7 @@ def foi_no_botao(botao,onde_cliquei):
         return True
     return False
 
-def estoquecsv():
+def estoquecsv(): #Função que le o estoque em csv
     with open('estoque.csv','r') as arq:
         linhas = arq.readlines()
     linhas_sem_cabecalho = linhas[1:]
@@ -30,7 +30,7 @@ def estoquecsv():
         estoque.append(dados)
     return estoque
 
-def adicionar_estoque(nome,valor,estoque):
+def adicionar_estoque(nome,valor,estoque): #Função que adiciona novos produtos ao estoque
     quantidade = 0
     ver_estoque = estoquecsv()
     if len(ver_estoque) == 0:
@@ -40,7 +40,7 @@ def adicionar_estoque(nome,valor,estoque):
         ultimo_id = ultimo_produto[0]
         ultimo_id = int(ultimo_id)
         novo_id = ultimo_id + 1 
-    with open('estoque.csv', 'a') as arq:
+    with open('estoque.csv', 'a', newline='', encoding='utf-8') as arq:
         arq = csv.writer(arq)
         arq.writerow([novo_id,nome,valor,estoque,quantidade])
 
@@ -109,58 +109,58 @@ def verificar_estoque():
         y = y + 30
 
 def cadastrar():
-    win = gp.GraphWin(  "Novo cadastro"  , 500, 450)
+    win1 = gp.GraphWin(  "Novo cadastro"  , 500, 450)
     title = gp.Circle(gp.Point(250,20),15)
     titulo = gp.Text(title.getCenter(), 'Novo Cadastro')
     titulo.setSize(18)
     titulo.setStyle('bold')
-    titulo.draw(win)
+    titulo.draw(win1)
     novo_nome = gp.Rectangle(gp.Point(100,100), gp.Point(200,70))
     novo_nome.setFill("#64e3a1")
     novo_nome.setOutline("black")
-    novo_nome.draw(win)
+    novo_nome.draw(win1)
     novo_nome_text = gp.Text(novo_nome.getCenter(), 'Nome')
-    novo_nome_text.draw(win)
+    novo_nome_text.draw(win1)
     novo_valor = gp.Rectangle(gp.Point(100,150), gp.Point(200,120))
     novo_valor.setFill("#64e3a1")
     novo_valor.setOutline("black")
-    novo_valor.draw(win)
+    novo_valor.draw(win1)
     novo_valor_text = gp.Text(novo_valor.getCenter(), 'Valor')
-    novo_valor_text.draw(win)
+    novo_valor_text.draw(win1)
     novo_estoque = gp.Rectangle(gp.Point(100,200), gp.Point(200,170))
     novo_estoque.setFill("#64e3a1")
     novo_estoque.setOutline("black")
-    novo_estoque.draw(win)
+    novo_estoque.draw(win1)
     novo_estoque_text = gp.Text(novo_estoque.getCenter(), 'Estoque')
-    novo_estoque_text.draw(win)
+    novo_estoque_text.draw(win1)
 
     texto_nome = gp.Rectangle(gp.Point(220,100), gp.Point(400,70))
-    texto_nome.draw(win)
+    texto_nome.draw(win1)
     entrada_nome = gp.Entry(texto_nome.getCenter(), 18)
     entrada_nome.setFill('white')
-    entrada_nome.draw(win)
+    entrada_nome.draw(win1)
 
     texto_valor = gp.Rectangle(gp.Point(220,150), gp.Point(400,120))
-    texto_valor.draw(win)
+    texto_valor.draw(win1)
     entrada_valor = gp.Entry(texto_valor.getCenter(), 18)
     entrada_valor.setFill('white')
-    entrada_valor.draw(win)
+    entrada_valor.draw(win1)
 
     texto_estoque = gp.Rectangle(gp.Point(220,200), gp.Point(400,170))
-    texto_estoque.draw(win)
+    texto_estoque.draw(win1)
     entrada_estoque = gp.Entry(texto_estoque.getCenter(), 18)
     entrada_estoque.setFill('white')
-    entrada_estoque.draw(win)
+    entrada_estoque.draw(win1)
 
     enviar = gp.Rectangle(gp.Point(200,330), gp.Point(300,300))
     enviar.setFill("#64e3a1")
     enviar.setOutline("black")
-    enviar.draw(win)
+    enviar.draw(win1)
     enviar_text = gp.Text(enviar.getCenter(), 'Cadastrar')
-    enviar_text.draw(win)
+    enviar_text.draw(win1)
     while True:
-        onde_cliquei = win.getMouse()
-        if foi_no_botao(enviar,onde_cliquei):
+        onde_cliquei1 = win1.getMouse()
+        if foi_no_botao(enviar,onde_cliquei1):
             nome = entrada_nome.getText()
             valor = entrada_valor.getText()
             estoque = entrada_estoque.getText()
